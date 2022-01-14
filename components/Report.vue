@@ -97,7 +97,7 @@ span > a{
   margin: 25px;
 }
 
-main {
+.main {
   height: 110%;
 }
 
@@ -168,6 +168,10 @@ main {
     left: 50.9%;
     font-size: 34px;
     white-space: nowrap;
+  }
+
+  .main {
+    height: 190%;
   }
 }
 
