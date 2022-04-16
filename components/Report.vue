@@ -25,7 +25,7 @@
       <h2 class="writer-date">{{ writer }}</h2>
       <h2 class="writer-date">{{ date }}</h2>
       <br />
-      <h3>{{ article }}</h3>
+      <h3>{{this.art}}</h3>
 
   </main>
   <br>
@@ -51,8 +51,18 @@
 </template>
 
 <script>
+
 export default {
   methods: {
+    getArticle: function(ale) {
+      const aleEnd = ale.substr(ale.length - 5);
+      if(!aleEnd === '.json') {
+        return ale;
+      } else if(aleEnd === '.json') {
+        const { alej } = require(`../articles/${ale}`);
+        return alej;
+      }
+    },
     redirect: function (link) {
       if(!link === String) return console.log('Not a string...');
 
@@ -78,7 +88,10 @@ export default {
       "article",
       "writer",
       "desc"
-  ]
+  ],
+  beforeMount() {
+   this.art = this.getArticle(this.$props.article);
+  }
 }
 </script>
 
